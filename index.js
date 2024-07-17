@@ -5,12 +5,12 @@ var express = require('express');
 var app = express();
 
 
-//app.get('/api/date:',function(req,res){
- // res.json({
- //   unix: req.params.date,
-  //  utc: req.params.date
- // })
-//})
+app.get('/api/date:',function(req,res){
+res.json({
+ unix: req.params.date,
+  utc: req.params.date
+})
+})
 
 
 
