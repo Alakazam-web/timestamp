@@ -28,10 +28,10 @@ app.get("/api/hello", function (req, res) {
 
 
 
-app.get('/api/:date?',function(req,res){
-let date = new Date();
-if (!req.params.date){
-if (new Date(req.params.date)){
+app.get('/api/:date',function(req,res){
+let dates = new Date();
+const test = new Date(req.params.date.toString())
+if (!isNaN((test))){
 res.json({
  utc: req.params.date
 })
@@ -39,12 +39,6 @@ res.json({
 else {
 res.json({
  error: "Invalid Date"
-})
-}
-}
-else {
-  res.json({
- utc: date
 })
 }
 })
