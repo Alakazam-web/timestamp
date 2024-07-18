@@ -4,7 +4,7 @@
 var express = require('express');
 var app = express();
 
-
+let stringify = require('json-stringify-safe');
 
 
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
@@ -31,10 +31,14 @@ app.get("/api/hello", function (req, res) {
 app.get('/api/:date?',function(req,res){
 let dates = new Date();
 if (req.params.date){
+
 const test = new Date(req.params.date.toString())
 if (!isNaN((test))){
+const utc_time =test.toGMTString()
+const unix_time = test.getTime()
 res.json({
- utc: req.params.date
+ utc: utc_time,
+ unix: unix_time
 })
 }
 else {
