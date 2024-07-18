@@ -45,8 +45,8 @@ if (!isNaN(req.params.date)){
 let utc_tim = new Date(Number(req.params.date)).toGMTString()
 console.log(utc_tim)
 res.json({
-  utc: utc_tim,
-  unix: req.params.date
+  unix: req.params.date,
+  utc: utc_tim
 })
 }
 else {
