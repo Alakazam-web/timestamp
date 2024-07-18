@@ -30,6 +30,7 @@ app.get("/api/hello", function (req, res) {
 
 app.get('/api/:date',function(req,res){
 let dates = new Date();
+if (req.params.date){
 const test = new Date(req.params.date.toString())
 if (!isNaN((test))){
 res.json({
@@ -39,6 +40,13 @@ res.json({
 else {
 res.json({
  error: "Invalid Date"
+})
+}
+}
+else {
+res.json({
+ utc: dates.toGMTString(),
+ unix: dates.getTime()
 })
 }
 })
