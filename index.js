@@ -26,9 +26,11 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-let date = new Date();
 
-app.get('/api/:date',function(req,res,next){
+
+app.get('/api/:date?',function(req,res){
+let date = new Date();
+if (!req.params.date){
 if (new Date(req.params.date)){
 res.json({
  utc: req.params.date
@@ -37,6 +39,12 @@ res.json({
 else {
 res.json({
  error: "Invalid Date"
+})
+}
+}
+else {
+  res.json({
+ utc: date
 })
 }
 })
